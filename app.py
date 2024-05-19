@@ -7,7 +7,7 @@ from tensorflow.keras.models import load_model
 app = Flask(__name__)
 model = load_model('model.h5',compile=True)
 
-img_size = 100
+img_size = 50
 
 def pred(img):
     img = cv2.resize(img, (img_size, img_size))
