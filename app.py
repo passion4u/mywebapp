@@ -11,11 +11,9 @@ img_size = 50
 def pred(img):
     img = cv2.resize(img, (img_size, img_size))
     img = np.array(img).astype('float32') / 255.0
-    pred = np.argmax(model.predict(np.array([img])))
-    if pred == 0:
-        return "USD"
-    else:
-        return "Euro"
+    out = model.predict(np.array([img]))
+    pred = np.argmax(out)
+    return f"USDの確率 {out[0]} euroの確率 {out[1]}"
 
 @app.route('/')
 def home():
