@@ -21,7 +21,11 @@
                 body: formData
             });
             const result = await response.json();
-            document.getElementById('result').innerText = 'Prediction: ' + result.prediction;
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <p>Prediction: ${result.prediction}</p>
+                <img src="${result.image_url}" alt="Uploaded Image" style="max-width:500px;">
+            `;
         });
     </script>
 </body>
